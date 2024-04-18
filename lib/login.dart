@@ -23,7 +23,7 @@ class _popupState extends State<popup> {
                 AwesomeDialog(
                     context: context,
                     dialogType: DialogType.info,
-                    borderSide: BorderSide(color: Colors.black, width: 2),
+                    borderSide: BorderSide(color: Colors.black, width: 3),
                     width: 280,
                     buttonsBorderRadius: const BorderRadius.all(
                       Radius.circular(2),
