@@ -12,11 +12,59 @@ class _calculateState extends State<calculate> {
   // Widget buttons(String buttonvalues) {
   //   return OutlinedButton(onPressed: () {}, child: Text(buttonvalues));
   // }
+
+  String textD = "";
+  String result = "";
+  late String oprtr;
+  late int firstnum;
+  late int secondnum;
+  void onbuttonclicked(String buttonvalue) {
+    if (buttonvalue == "C") {
+      textD = "";
+      result = "";
+      firstnum = 0;
+      secondnum = 0;
+    } else if (buttonvalue == "+" ||
+        buttonvalue == "-" ||
+        buttonvalue == "*" ||
+        buttonvalue == "/") {
+      firstnum = int.parse(textD);
+      oprtr = buttonvalue;
+      result = "";
+    } else if (buttonvalue == "=") {
+      secondnum = int.parse(textD);
+
+      if (oprtr == "+") {
+        result = (firstnum + secondnum).toString();
+      }
+      if (oprtr == "-") {
+        result = (firstnum - secondnum).toString();
+      }
+      if (oprtr == "*") {
+        result = (firstnum * secondnum).toString();
+      }
+      if (oprtr == "/") {
+        result = (firstnum / secondnum).toString();
+      }
+    } else {
+      result = int.parse(textD + buttonvalue).toString();
+    }
+
+    setState(() {
+      textD = result;
+    });
+  }
+
   Widget buttons(String buttonvalue) {
     return Expanded(
       child: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: ElevatedButton(onPressed: () {}, child: Text(buttonvalue)),
+        child: OutlinedButton(
+            onPressed: () => onbuttonclicked(buttonvalue),
+            child: Text(
+              buttonvalue,
+              style: const TextStyle(fontSize: 20),
+            )),
       ),
     );
   }
@@ -36,14 +84,20 @@ class _calculateState extends State<calculate> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          Text("ertyS"),
-          Row(
-            children: [
-              buttons("AC"),
-              buttons("X"),
-              buttons("%"),
-              buttons("/"),
-            ],
+          Padding(
+            padding: EdgeInsets.only(right: 20),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Text(
+                  textAlign: TextAlign.right,
+                  textD,
+                  style: TextStyle(
+                    fontSize: 28,
+                  ),
+                ),
+              ],
+            ),
           ),
           Row(
             children: [
@@ -72,8 +126,8 @@ class _calculateState extends State<calculate> {
           Row(
             children: [
               buttons("0"),
-              buttons("00"),
-              buttons("."),
+              buttons("C"),
+              buttons("/"),
               buttons("="),
             ],
           ),

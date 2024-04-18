@@ -24,19 +24,14 @@ class _MyCalculatorState extends State<MyCalculator> {
       firstNum = 0;
       secondNum = 0;
       res = '';
-    } 
-    
-    else if (btnValue == '+' ||
+    } else if (btnValue == '+' ||
         btnValue == '-' ||
         btnValue == '*' ||
         btnValue == '/') {
       firstNum = int.parse(textDisplay);
       res = '';
       operatorUse = btnValue;
-    }
-    
-    
-     else if (btnValue == '=') {
+    } else if (btnValue == '=') {
       secondNum = int.parse(textDisplay);
       if (operatorUse == '+') {
         res = (firstNum + secondNum).toString();
