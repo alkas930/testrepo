@@ -18,7 +18,7 @@ class _popupState extends State<popup> {
       body: Column(
         children: [
           AnimatedButton(
-              text: "dissmiss",
+              text: "dissmis",
               pressEvent: () {
                 AwesomeDialog(
                     context: context,
