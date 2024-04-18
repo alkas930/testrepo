@@ -92,10 +92,6 @@ class _MyCalculatorState extends State<MyCalculator> {
               ],
             ),
           ),
-          Divider(
-            color: Colors.black,
-            height: 10,
-          ),
           Row(
             children: [
               customeButton('9'),
